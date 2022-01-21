@@ -1,6 +1,6 @@
 global:
   deployment:
-    replicas: 1
+    replicas: 3
     image:
       tag: latest
   service:
