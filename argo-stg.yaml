@@ -1,0 +1,27 @@
+# ENV=stg
+# Look for branch stg
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-app-stg
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/oreasek/argo-multiple-envs.git
+      revision: HEAD
+      directories:
+      - path: iac/envs/stg/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/oreasek/argo-multiple-envs.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: stg
+  
