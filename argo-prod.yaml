@@ -9,7 +9,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/oreasek/argo-multiple-envs.git
-      revision: HEAD
+      revision: prod
       directories:
       - path: iac/envs/prod/*
   template:
@@ -19,7 +19,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/oreasek/argo-multiple-envs.git
-        targetRevision: HEAD
+        targetRevision: prod
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
